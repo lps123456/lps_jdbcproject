@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="lps_jdbcproject:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="lps_jdbcproject.war">
+      <element id="artifact" artifact-name="lps_jdbcproject:war exploded" />
+    </root>
+  </artifact>
+</component>
