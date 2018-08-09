@@ -12,7 +12,7 @@
 		http://twitter.com/halalit_usman
 	-->
 	<meta charset="utf-8">
-	<title>Free HTML5 Bootstrap Admin Template</title>
+	<title>×¢²áÒ³Ãæ</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
 	<meta name="author" content="Muhammad Usman">
@@ -80,11 +80,11 @@
 							</div>
 							<div class="clearfix"></div>
 							<div class="input-prepend">
-							<label class="remember" for="remember"><input type="checkbox" id="remember" />Remember me</label>
+							<label class="remember" for="remember"><input type="checkbox" id="remember" /></label>
 							</div>
 							<div class="clearfix"></div>
 							<p class="center span5">
-							<button type="submit" class="btn btn-primary">Login</button>
+							<button type="submit" class="btn btn-primary">×¢²á</button>
 							</p>
 						</fieldset>
 					</form>

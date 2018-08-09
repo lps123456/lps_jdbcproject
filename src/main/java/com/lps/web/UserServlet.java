@@ -1,5 +1,6 @@
 package com.lps.web;
 
+import com.lps.service.user.UserService;
 import com.lps.util.ResultUtil;
 
 import javax.servlet.annotation.WebServlet;
@@ -8,7 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/login")
 public class UserServlet extends BaseServlet {
-
+//不实例化service对象  让工厂实例化
+    private UserService userService;
     @Override
     public Class getServletClass() {
         System.out.println("=====02:UserServlet===》getServletClass");

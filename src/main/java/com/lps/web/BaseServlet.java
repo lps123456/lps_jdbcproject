@@ -67,7 +67,6 @@ public abstract class BaseServlet extends HttpServlet {
                 writer.close();
             }
         }
-
     }
 
     private Object execute(HttpServletRequest req, HttpServletResponse resp) {
