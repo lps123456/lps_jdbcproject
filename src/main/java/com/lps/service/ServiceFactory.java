@@ -29,7 +29,7 @@ public class ServiceFactory {
         public static IUserService getServiceImpl(String serviceName) {
             IUserService  service=null;
             switch (serviceName){
-                case "userService":
+                case "UserService":
                     service=new UserServiceImpl();
                 default:
                     break;

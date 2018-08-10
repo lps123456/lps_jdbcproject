@@ -1,6 +1,7 @@
 package com.lps.entity;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
 
 public class Users implements Serializable {
     private Integer id;
@@ -8,6 +9,9 @@ public class Users implements Serializable {
     private String passsword;
     private String email;
     private int userType;
+
+    public Users() {
+    }
 
     public Integer getId() {
         return id;

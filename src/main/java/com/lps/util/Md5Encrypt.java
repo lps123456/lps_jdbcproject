@@ -3,6 +3,7 @@ package com.lps.util;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Arrays;
 
 public class Md5Encrypt {
@@ -89,5 +90,46 @@ public class Md5Encrypt {
             //口令不正确返回口令不匹配消息
             return false;
         }
+
+    }
+
+    /**
+     * 获得加密后的16进制形式口令
+     * @param password
+     * @return
+     * @throws NoSuchAlgorithmException
+     * @throws UnsupportedEncodingException
+     */
+    public static String getEncryptedPwd(String password)
+            throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        //声明加密后的口令数组变量
+        byte[] pwd = null;
+
+        //随机数生成器
+        SecureRandom random = new SecureRandom();
+        //声明盐数组变量
+        byte[] salt = new byte[SALT_LENGTH];
+        //将随机数放入盐变量中
+        random.nextBytes(salt);
+
+        //声明消息摘要对象
+        MessageDigest md = null;
+        //创建消息摘要
+        md = MessageDigest.getInstance("MD5");
+        //将盐数据传入消息摘要对象
+        md.update(salt);
+        //将口令的数据传给消息摘要对象
+        md.update(password.getBytes("UTF-8"));
+        //获得消息摘要的字节数组
+        byte[] digest = md.digest();
+
+        //因为要在口令的字节数组中存放盐，所以加上盐的字节长度
+        pwd = new byte[digest.length + SALT_LENGTH];
+        //将盐的字节拷贝到生成的加密口令字节数组的前12个字节，以便在验证口令时取出盐
+        System.arraycopy(salt, 0, pwd, 0, SALT_LENGTH);
+        //将消息摘要拷贝到加密口令字节数组从第13个字节开始的字节
+        System.arraycopy(digest, 0, pwd, SALT_LENGTH, digest.length);
+        //将字节数组格式加密后的口令转化为16进制字符串格式的口令
+        return byteToHexString(pwd);
     }
 }

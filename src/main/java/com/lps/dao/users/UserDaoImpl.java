@@ -1,12 +1,14 @@
 package com.lps.dao.users;
 
 import com.lps.entity.Users;
+import com.lps.util.BaseDaoUtil;
 import com.lps.util.PageUtil;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
 import java.util.List;
 
-public class UserDaoImpl implements UserDao {
+public class UserDaoImpl extends BaseDaoUtil implements UserDao {
     @Override
     public int add(Users users) {
         String sql="INSERT INTO news_user(userName,`upwd`,email,userType) VALUES(?,?,?,?)";
@@ -14,7 +16,7 @@ public class UserDaoImpl implements UserDao {
         return executeUpdate(sql,params);
     }
 
-    private int executeUpdate(String sql, Object[] params) {
+    public int executeUpdate(String sql, Object[] params) {
         return 0;
     }
 
@@ -46,6 +48,27 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<Users> findAllByPage(PageUtil util, Object... params) {
+        return null;
+    }
+
+    @Override
+    public String validateName(String userName) {
+        String sql = "SELECT `passWord` FROM news_userinfo WHERE userName=?";
+        ResultSet rs =executeQuery(sql,userName);
+        System.out.println(userName+sql);
+        String password = null;
+        try { //获取密码
+            if (rs.next()) {
+                password = rs.getString("passWord");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return password;
+    }
+
+    @Override
+    public Users login(String userName, String pawssword) {
         return null;
     }
 }

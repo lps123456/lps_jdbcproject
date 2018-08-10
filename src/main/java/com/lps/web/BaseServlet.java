@@ -20,8 +20,11 @@ public abstract class BaseServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
         //获取用户的请求  请求中必须携带一个参数===》方法名称 methodName
         String methodName=  req.getParameter("methodName");
+        System.out.println(methodName+"====================");
         System.out.println("=====01:先进入");
         //根据用户传递的参数   确定执行哪个子servlet中的这个methodName方法
         //用户需要指定的方法
@@ -29,12 +32,15 @@ public abstract class BaseServlet extends HttpServlet {
         //执行方法的返回值
         Object result=null;
         if (methodName==null||"".equals(methodName)){
-            result= execute(req,resp);  //统一返回到 主页面
+           // result= execute(req,resp);  //统一返回到 主页面
+            System.out.println(result+"结果11111");
         }else {  //证明有方法  必须先确定哪个servlet
             try {
+
                 //找到方法
                 method= getServletClass().getDeclaredMethod(methodName,HttpServletRequest.class,HttpServletResponse.class);
                 result= method.invoke(this,req,resp); //执行方法
+                System.out.println(result+"结果2222");
                 System.out.println("======>获取了 需要返回的页面"+result);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -59,7 +65,7 @@ public abstract class BaseServlet extends HttpServlet {
                 req.getRequestDispatcher(viewName).forward(req,resp);
             }else{//返回值是json
                 System.out.println("====>json数据的处理===》");
-                String resultJson= (String) JSON.toJSONString(result);
+                String resultJson=  JSON.toJSONString(result);
                 System.out.println("json=====>"+resultJson);
                 PrintWriter writer=resp.getWriter();
                 writer.write(resultJson);
@@ -70,6 +76,7 @@ public abstract class BaseServlet extends HttpServlet {
     }
 
     private Object execute(HttpServletRequest req, HttpServletResponse resp) {
+
         return "main";  //返回主页面
     }
 }

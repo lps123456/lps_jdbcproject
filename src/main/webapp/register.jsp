@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+	<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" isELIgnored="false" %>
 <head>
 	<!--
 		Charisma v1.0.0
@@ -12,7 +13,7 @@
 		http://twitter.com/halalit_usman
 	-->
 	<meta charset="utf-8">
-	<title>ע��ҳ��</title>
+	<title>注册页面</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
 	<meta name="author" content="Muhammad Usman">
@@ -73,6 +74,7 @@
 						<fieldset>
 							<div class="input-prepend" title="Username" data-rel="tooltip">
 								<span class="add-on"><i class="icon-user"></i></span><input autofocus class="input-large span10" name="username" id="username" type="text" value="admin" />
+							   <span id="error"></span>
 							</div>
 							<div class="clearfix"></div>
 							<div class="input-prepend" title="Password" data-rel="tooltip">
@@ -84,7 +86,7 @@
 							</div>
 							<div class="clearfix"></div>
 							<p class="center span5">
-							<button type="submit" class="btn btn-primary">ע��</button>
+							<button type="submit" class="btn btn-primary">注册</button>
 							</p>
 						</fieldset>
 					</form>
@@ -167,7 +169,7 @@
 	<script src="js/jquery.history.js"></script>
 	<!-- application script for Charisma demo -->
 	<script src="js/charisma.js"></script>
-	
+	<script src="js/common/register.js"></script>
 		
 </body>
 </html>
